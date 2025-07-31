@@ -1,0 +1,13 @@
+.red {
+    color: red;
+}
+
+.resultado {
+    width: 300px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: cadetblue;
+    color: aliceblue;
+    text-align: center;
+    margin: 16px auto;
+}
