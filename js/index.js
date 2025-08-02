@@ -1,198 +1,175 @@
 /*
-    Variable - Elemento que permite almacenar datos (tipo de dato + valor)
-        => Declaración - Crear la caja
-            -> var - Palabra reservada que me permite crear una variable (let, const)
-        => Asignación - Guardar un valor en la caja    
-            -> = - Operador que permite asignar un valor a una variable
-        => Tipo de dato - Herramienta que permite reconocer qué puedo hacer con el valor almacenado en la caja
-            -> En JS, las variables reciben el Tipo de Dato al momento de asignarlas
-            -> En JS, cambiar el valor puede modificar el Tipo de Dato
-        => Valor - Cualquier cosa que se pueda almacenar en la caja (número, texto, true, false, etc)
-        
-        
-    Operar con variables === Usar los datos que almacenamos
-    
-    
-    Operadores de Variables
-        => Matemáticos - Permiten realizar operaciones matemáticas
-            -> +
-                => Suma de datos de tipo number
-                => Concatenación (juntar) de datos de tipo string
-            -> -, *, /, %
-                => Realizan la correspondiente operación matemática sobre datos de tipo number    
-        => Asignación - Permiten guardar en una variable
-            -> =
-            -> Combinar Operadores Matemáticos y el Operador de Asignación
-                -> +=, -=, *=, /=, %=
-                    => Se utilizan para reemplazar el valor actual de la variable por el resultado de la operación de ese valor y otro valor
-        => Incremento(++)/Decremento(--) - Sumar(++)/Restar(--) 1 al valor almacenado y reemplazar el resultado
-            -> pre ++variable/--variable
-            -> post variable++/variable--
-        => NO SE PUEDE OPERAR SOBRE DATOS DE DISTINTO TIPO
-            -> Casteo implícito - JS convierte un dato en otro para poder operar
-                => +
-                    => string + number -> string + string = string
-                => -, *, /, %
-                    => string (-, *, /, %) number -> number (-, *, /, %) number = number    
-                    => NaN (Not a Number) -> Es valor de tipo number que me indica que JS no pudo realizar la operación matemática porque no existía un número
-
+    Programación Orienta a Objetos (POO)
+        => Clases - Plantilla que contiene información
+        => Objetos - Copia de esa plantilla
+            -> Objeto HTML - Plantilla que permite trabajar con los elementos HTML
+                -> Herramientas JS para copiar el Objeto HTML
+                    -> document.getElementById(idDelElementoHTML)
+                    -> document.querySelector(selectorCSS)
+                        -> Siempre trabajo con el PRIMER elemento HTML que cumpla con el selector CSS
+                    -> document.querySelectorAll(selectorCSS)
+                        -> Permite elegir con cuál elemento que cumpla con el selector CSS trabajar      
 */
 
-/*
-    Matemáticos
-*/
-var n1 = 1; //Declaración y Asignación en una sentencia
-var n2 = 1;
+var unVar; //Tipo de dato: undefined (variable declara SIN tipo de dato ni valor)
 
-console.log(n1 + n2);
+var variableNull = document.getElementById("mai"); //Asigno un dato de tipo Objeto HTML. Para tener el valor (la copia de Objeto HTML) en el documento HTML tiene que haber un elemento con el id="mai". No existe un elemento con el id="mai". No tengo valor
+// null (variable declarada CON tipo de dato SIN valor)
+console.log(variableNull);
 
-//string + number + number => string + string + string
-var texto = "El resultado de la suma es: " + n1 + n2;
-console.log(typeof texto);
-
-console.log("El resultado de la suma es: " + (n1 + n2));
-
-var resultado = n1 + n2;
-console.log("El resultado de la suma es: " + resultado);
-
-//string + number - number -> (string + number = string) - number -> string - number
-console.log("El resultado de la resta es: " + 5 - 2);
-
-//string - number -> number - number
-console.log("5" - 2);
-
-/*
-    Asignación
-*/
-var num1 = 1;
-var num2 = 1;
-console.log("Valor almacenado en la variable num1: " + num1);
-
-//Realizar la suma de num1 y num2 y almacenarla en num1
-num1 += num2; //num1 = num1 + num2;
-console.log("Valor almacenado en la variable num1: " + num1);
-num1 += num2; //num1 = num1 + num2;
-console.log("Valor almacenado en la variable num1: " + num1);
-
-num1 += "5";
-console.log("Valor almacenado en la variable num1: " + num1);
-//Tarea - Mostrar en consola (2)
-//Tarea - Realizar operación (1)
-
-var texto = "Completo la ";
-// Tarea 1 - Declarar variable
-// Tarea 2 - Asignar "Completo la "
-texto += "frase";
-// Tarea 3 - Realizar la operación
-console.log(texto);
-// Tarea 4 - Mostrar
-
-/*
-    Incremento(++)/Decremento(--)
-*/
-var num = 1;
-
-// pre - Primero realiza la suma, después muestra
-// console.log(++num);
-// console.log("Valor almacenado en num " + num);
-
-// post - Primero muestra, después suma
-console.log(num++); //1
-console.log("Valor almacenado en num " + num); //2
-
-/*
-    JS tiene que realizar 2 acciones
-        => Sumar 1 al valor almacenado en la variable num y reemplazar el valor original con el resultado de la suma
-        => Mostrar el valor almacenado en la variable num (console.log)
-*/
-
-/*
-    Funciones Básicas de JS
-        => Entrada de Datos - Sirven para solicitar información
-            -> prompt(mensajeParaElUsuario)
-                -> Permite que el usuario ingrese un dato de tipo string
-        => Salida de Datos - Sirven para mostrar información
-            -> console.log(datoAMostrar) - Muestra información en la consola
-            -> console.write(datoAMostrar) - Muestra información en la ventana del navegador (Se pone en donde pusimos el archivo JS)
-        => Conversión de datos (casteo explícito) - Sirve cuando necesitamos convertir manualmente un tipo de dato en otro
-            -> parseInt(string)
-                -> parseInt("1.8") => 1
-            -> parseFloat(string)
-                -> parseFloat("1.8") => 1.8
-            -> Number(string)    
-                -> Number("1.8") => 1.8
-*/
-
-document.write("<h2 class='red'>Soy un título</h2>");
-document.write("hola");
-
-var html = "<p>Soy un p creado en JS</p>";
-document.write(html);
+var main = document.querySelector("main");
+console.log(main);
+//main.innerText = "<h2>Hola, mundo!</h2>"; // Permite agregar dato de tipo string que representa texto plano
+var texto = "<h2>Hola, mundo!</h2>";
+//main.innerHTML += texto; // Permite agregar dato de tipo string que representa texto enriquecido
+main.innerHTML = texto + main.innerHTML;
 
 // var primerNum = parseInt(prompt("Ingresa el primer número"));
-// var segundoNum = prompt("Ingresa el segundo número");
-// segundoNum = parseInt(segundoNum);
+// var segundoNum = parseInt(prompt("Ingresa el segundo número"));
+// document.write("<p class='resultado'>" + (primerNum + segundoNum) + "</p>");
 
-// var mostrarResultado =
-//   "<p class='resultado'>" + (primerNum + parseInt(segundoNum)) + "</p>";
-// var mostrarResultado =
-//   "<p class='resultado'>" + parseInt(primerNum + segundoNum) + "</p>";
-// document.write(mostrarResultado);
+var resultado = document.querySelector(".resultado");
+console.log(resultado);
+// resultado.innerText = primerNum + segundoNum;
 
-/*
-    Programa
-        -> Objetivo: Sumar dos números y mostrar el resultado
+/*  
+    Operadores de Variables
+        => Matemáticos - Permiten realizar operaciones entre datos de tipo number
+            -> +
+                -> Función 1: Realizar suma entre datos de tipo number
+                -> Función 2: Concatenar datos de tipo string
+            -> -, *, /, %
+                -> Permiten realizar la correspondiente operación entre datos de tipo number
+        => Asignación - Almacenan datos dentro de una variable
+            -> =
+            -> Combinar con Matemáticos
+                -> +=, -=, etc
+                    -> Realizan la correspondiente operación matemática y asignan el resultado a la variable
+        => Incremente(++)/Decremento(--) - Sumar/Restar 1 al valor de la variable y asignarle el resultado
+            -> pre - Primero realiza la operación matemática, después usa el valor asignado
+            -> post - Primero usa el valor asignado (trabajamos con el valor antes de realizar la operación), después realiza la operación
+        => Lógicos - Se utilizan para crear condiciones   
 
-    ¿Qué necesito?
-        => Los números
-            -> prompt
-        => Una forma de que el usuario pueda visualizar el resultado    
-            -> document.write
+    NO SE PUEDE OPERAR CON VARIABLES DE DISTINTO TIPO    
+        -> El operador == o != NO impide el casteo implícito
+            -> number == string -> string == string -> true
+        -> El operador === o !== IMPIDE el casteo implícito
+            -> number === string -> number === string -> false    
+
+    Condiciones - Son preguntas que se responden sí o no    
+        => ¿Es 7 mayor que 3? - Sí
+            -> 7 > 3 - true
+        => ¿3 es mayor o igual que 7? - No
+            -> 3 >= 7 - false    
+        => ¿Hay algo guardado en la variable? - La existencia o no de un valor almacenado en una variable es una condición    
+            -> falsie - Valores que hace que JS responda que no existe valor (responda false)
+                -> undefined (no tiene tipo de dato ni valor)
+                -> null (tiene dato no tiene valor)
+                -> false
+                -> 0
+                -> -0
+                -> ""
+                -> NaN (Not a Number) - Elemento que tiene tipo de dato number pero no tiene valor
+            -> trusty - Todo valor que no esté en la lista de falsie, va a generar que JS responda true
+
+    Estructuras de Control de Flujo - Usan condiciones para saber si realizan]/repiten una acción
+        => Condicionales - Escribimos condiciones con intención de obtener un true
+            -> if/else
+                -> Podemos no escribir el else
+                -> Si solo vamos a usar una sentencia podemos no escribir las llaves    
+                -> if/else if/else
+                    => Se usa cuando queremos hacer más de una pregunta con acciones distintas para cada respuesta 
+                    => Se realiza la acción del primer elemento cuya condición es true
+            -> Operador Ternario
+                -> condición ? true : false
+                -> No puedo ignorar el else
+                -> No puedo poner más de una sentencia    
+                -> Puedo guardar el resultado en una variable
+            -> Switch    
+        => Bucles - Escribimos condiciones que indican si debe repetirse el bloque o no. El bloque se va a repetir SIEMPRE que la condición sea
+            -> for
+            -> while
+            -> do-while        
 */
 
-/*
-    Programa: Una persona necesita una muy simple calculadora que pueda dividir dos
-    números.
-        -> Objetivo: Realizar la división de dos números y mostrar el resultado
+var n1 = 1;
+var n2 = "1";
 
-    ¿Qué necesito?
-        => Los números
-            -> prompt (convertir a number)
-        => Una forma de que el usuario pueda visualizar el resultado    
-            -> document.write
-*/
-
-// var dividendo = Number(prompt("Ingrese el dividendo"));
-// var divisor = Number(prompt("Ingrese el divisor"));
-
-// document.write("<p class='resultado'>" + dividendo / divisor + "</p>");
+//¿Es la variable n1 igual a la variable n2? - No
+console.log(n1 == n2); //true
+//¿Es la variable n1 estrictamente igual a la variable n2?
+console.log(n1 === n2); //false
 
 /*
-    Programa: Un bibliotecario desea un simple programa en el que ingrese el nombre y el apellido de alguien por separado y lo muestre normalizado.
-    Normalizado significa que debería verse así: Apellido, Nombre
+    if/else
 
-    ¿Qué necesito?
-        => Pedir Nombre
-        => Pedir Apellido
-        => Mostrar normalización
+    if (condición) {
+        //bloque de código que se ejecuta cuando la condición es true
+    } else {
+        //bloque de código que se ejecuta cuando la condición es false
+    }   
 */
 
-// var nombre = prompt("Ingrese el nombre");
-// var apellido = prompt("Ingrese el apellido");
-// document.write(nombre + ", " + apellido);
+if (n1 === n2) {
+  var textoAMostrar = "Realizo esta acción porque la condición es true";
+  console.log(textoAMostrar);
+} else {
+  var textoAMostrar = "Realizo esta acción porque la condición es false";
+  console.log(textoAMostrar);
+}
+
+if (n1 === n2) console.log("Realizo esta acción porque la condición es true");
+else console.log("Realizo esta acción porque la condición es false");
+
+if (n1 != n2) console.log("La condición es true");
+
+var unaVariable = "";
+
+if (unaVariable)
+  console.log("TENGO un valor almacenado en la variable unaVariable");
+else console.log("NO Tengo un valor almacenado en la variable unaVariable");
+
+if (n1 == n2) console.log("Quiero hacer la acción uno");
+else if (n1 !== n2) console.log("Quiero hacer la acción dos");
+// else if (n1 != n2) console.log("Quiero hacer la acción dos");
+// else if (n1 != n2) console.log("Quiero hacer la acción dos");
+// else if (n1 != n2) console.log("Quiero hacer la acción dos");
+else
+  console.log(
+    "Hago esto porque no se cumplió ninguna de las condiciones anteriores"
+  );
 
 /*
-    Programa: Un alumno debe calcular su promedio en una materia en la que tiene 3
-    notas. Las notas van de 1 a 10.
+  EJERCICIO
 
-    ¿Qué necesito?
-        => Pedir las tres notas
-        => Calcular el promedio
-        => Mostrarlo
+  Pedir al usuario que ingrese un número del 1 al 10.
+  Si ingresa un número menor o igual que 4, mostrar en pantalla un cartel rojo con el número elegido
+  Si ingresa un entre 4 y 6, mostrar en pantalla un cartel amarillo con el número elegido
+  Para el resto de los números, mostrar en pantalla un cartel amarillo con el número elegido
+
+
+  ¿Qué necesito?
+    -> Obtener el número
+    -> Mostrar el número
+        -> Verificar qué condición se cumple
+            -> <= 4
+            -> > 4 && <= 6
+        -> Copiar Objeto HTML
+            -> Crear elemento en documento HTML (ok)
 */
 
-var nota1 = parseFloat(prompt("Ingrese nota 1"));
-var nota2 = parseFloat(prompt("Ingrese nota 2"));
-var nota3 = parseFloat(prompt("Ingrese nota 3"));
-var promedio = (nota1 + nota2 + nota3) / 3;
-document.write("Promedio: " + promedio);
+var numElegido = parseInt(prompt("Ingrese un número del 1 al 10"));
+var divIf = document.querySelector("#if");
+
+if (numElegido <= 4) {
+  divIf.innerHTML = "<p class='cartel rojo'>" + numElegido + "</p>";
+} else if (numElegido > 4 && numElegido <= 6) {
+  divIf.innerHTML = "<p class='cartel amarillo'>" + numElegido + "</p>";
+} else divIf.innerHTML = "<p class='cartel verde'>" + numElegido + "</p>";
+
+document.getElementById("ternario").innerHTML =
+  numElegido <= 4
+    ? "<p class='cartel rojo'>" + numElegido + "</p>"
+    : numElegido > 4 && numElegido <= 6
+    ? "<p class='cartel amarillo'>" + numElegido + "</p>"
+    : "<p class='cartel verde'>" + numElegido + "</p>";

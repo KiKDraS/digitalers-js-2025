@@ -1,8 +1,5 @@
-.red {
-    color: red;
-}
-
-.resultado {
+.resultado,
+.cartel {
     width: 300px;
     padding: 16px;
     border-radius: 8px;
@@ -10,4 +7,16 @@
     color: aliceblue;
     text-align: center;
     margin: 16px auto;
+}
+
+.rojo {
+    background-color: red;
+}
+
+.amarillo {
+    background-color: yellow;
+}
+
+.verde {
+    background-color: green;
 }
