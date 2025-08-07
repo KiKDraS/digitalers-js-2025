@@ -1,22 +1,11 @@
-.resultado,
-.cartel {
-    width: 300px;
-    padding: 16px;
-    border-radius: 8px;
+.cartel-dia p {
+    width: 325px;
+    padding: 16px 8px;
+    border-radius: 16px;
+    margin: 16px auto;
     background-color: cadetblue;
     color: aliceblue;
+    font-weight: 700;
     text-align: center;
-    margin: 16px auto;
-}
-
-.rojo {
-    background-color: red;
-}
-
-.amarillo {
-    background-color: yellow;
-}
-
-.verde {
-    background-color: green;
+    font-size: 1.5rem;
 }

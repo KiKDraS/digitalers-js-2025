@@ -1,60 +1,24 @@
-/*
-    Programación Orienta a Objetos (POO)
-        => Clases - Plantilla que contiene información
-        => Objetos - Copia de esa plantilla
-            -> Objeto HTML - Plantilla que permite trabajar con los elementos HTML
-                -> Herramientas JS para copiar el Objeto HTML
-                    -> document.getElementById(idDelElementoHTML)
-                    -> document.querySelector(selectorCSS)
-                        -> Siempre trabajo con el PRIMER elemento HTML que cumpla con el selector CSS
-                    -> document.querySelectorAll(selectorCSS)
-                        -> Permite elegir con cuál elemento que cumpla con el selector CSS trabajar      
-*/
-
-var unVar; //Tipo de dato: undefined (variable declara SIN tipo de dato ni valor)
-
-var variableNull = document.getElementById("mai"); //Asigno un dato de tipo Objeto HTML. Para tener el valor (la copia de Objeto HTML) en el documento HTML tiene que haber un elemento con el id="mai". No existe un elemento con el id="mai". No tengo valor
-// null (variable declarada CON tipo de dato SIN valor)
-console.log(variableNull);
-
-var main = document.querySelector("main");
-console.log(main);
-//main.innerText = "<h2>Hola, mundo!</h2>"; // Permite agregar dato de tipo string que representa texto plano
-var texto = "<h2>Hola, mundo!</h2>";
-//main.innerHTML += texto; // Permite agregar dato de tipo string que representa texto enriquecido
-main.innerHTML = texto + main.innerHTML;
-
-// var primerNum = parseInt(prompt("Ingresa el primer número"));
-// var segundoNum = parseInt(prompt("Ingresa el segundo número"));
-// document.write("<p class='resultado'>" + (primerNum + segundoNum) + "</p>");
-
-var resultado = document.querySelector(".resultado");
-console.log(resultado);
-// resultado.innerText = primerNum + segundoNum;
-
 /*  
-    Operadores de Variables
-        => Matemáticos - Permiten realizar operaciones entre datos de tipo number
-            -> +
-                -> Función 1: Realizar suma entre datos de tipo number
-                -> Función 2: Concatenar datos de tipo string
-            -> -, *, /, %
-                -> Permiten realizar la correspondiente operación entre datos de tipo number
-        => Asignación - Almacenan datos dentro de una variable
-            -> =
-            -> Combinar con Matemáticos
-                -> +=, -=, etc
-                    -> Realizan la correspondiente operación matemática y asignan el resultado a la variable
-        => Incremente(++)/Decremento(--) - Sumar/Restar 1 al valor de la variable y asignarle el resultado
-            -> pre - Primero realiza la operación matemática, después usa el valor asignado
-            -> post - Primero usa el valor asignado (trabajamos con el valor antes de realizar la operación), después realiza la operación
-        => Lógicos - Se utilizan para crear condiciones   
-
     NO SE PUEDE OPERAR CON VARIABLES DE DISTINTO TIPO    
         -> El operador == o != NO impide el casteo implícito
             -> number == string -> string == string -> true
         -> El operador === o !== IMPIDE el casteo implícito
             -> number === string -> number === string -> false    
+    
+    Operadores de Variables
+        => Matemáticos
+            -> +, -, *, /, %
+        => incremento(++)/decremento(--)    
+            -> pre - primero realiza la cuenta, después usa el valor
+            -> post - primero usa el valor, después realiza la cuenta
+        => Asignación
+            -> =    
+            -> +=, -=, *=, /=, %=
+        => Lógicos - Se utilizan para crear condiciones   
+            => Operadores de Comparación - Se busca un true/false en base a la comparación entre varias condiciones
+                -> AND (&&) - La condición es true cuando todas las preguntas se responde con true
+                -> OR (||) - La condición es false cuando todas las preguntas se responden con false
+                -> NOT (!) - Invertir el valor obtenido por la condición
 
     Condiciones - Son preguntas que se responden sí o no    
         => ¿Es 7 mayor que 3? - Sí
@@ -86,90 +50,225 @@ console.log(resultado);
                 -> No puedo poner más de una sentencia    
                 -> Puedo guardar el resultado en una variable
             -> Switch    
-        => Bucles - Escribimos condiciones que indican si debe repetirse el bloque o no. El bloque se va a repetir SIEMPRE que la condición sea
+                -> Evaluar un dato PREVIAMENTE procesado del que se conocen los posibles valores
+        => Bucles - Escribimos condiciones que indican si debe repetirse el bloque o no. El bloque se va a repetir SIEMPRE que la condición sea true
             -> for
-            -> while
+            -> while - Ideal para hacer validaciones
             -> do-while        
 */
 
-var n1 = 1;
-var n2 = "1";
+//Condición 1 - ¿Es 2 mayor que 3? - 2 > 3 -> false
+//Condición 2 - ¿Es 4 menor que 5? - 4 < 5 -> true
 
-//¿Es la variable n1 igual a la variable n2? - No
-console.log(n1 == n2); //true
-//¿Es la variable n1 estrictamente igual a la variable n2?
-console.log(n1 === n2); //false
+if (2 > 3) console.log("Hago algo 1"); //Esto no se ve porque la condición es false
 
-/*
-    if/else
+if (4 < 5) console.log("Hago algo 2"); //Esto se ve porque la condición es true
 
-    if (condición) {
-        //bloque de código que se ejecuta cuando la condición es true
-    } else {
-        //bloque de código que se ejecuta cuando la condición es false
-    }   
-*/
+//Condición 3 - ¿Es 2 mayor que 3? Y ¿Es 4 menor que 5? - (2 > 3) && (4 < 5) -> false && true -> false
+if (2 > 3 && 4 < 5) console.log("Hago algo 3");
 
-if (n1 === n2) {
-  var textoAMostrar = "Realizo esta acción porque la condición es true";
-  console.log(textoAMostrar);
-} else {
-  var textoAMostrar = "Realizo esta acción porque la condición es false";
-  console.log(textoAMostrar);
-}
-
-if (n1 === n2) console.log("Realizo esta acción porque la condición es true");
-else console.log("Realizo esta acción porque la condición es false");
-
-if (n1 != n2) console.log("La condición es true");
-
-var unaVariable = "";
-
-if (unaVariable)
-  console.log("TENGO un valor almacenado en la variable unaVariable");
-else console.log("NO Tengo un valor almacenado en la variable unaVariable");
-
-if (n1 == n2) console.log("Quiero hacer la acción uno");
-else if (n1 !== n2) console.log("Quiero hacer la acción dos");
-// else if (n1 != n2) console.log("Quiero hacer la acción dos");
-// else if (n1 != n2) console.log("Quiero hacer la acción dos");
-// else if (n1 != n2) console.log("Quiero hacer la acción dos");
-else
-  console.log(
-    "Hago esto porque no se cumplió ninguna de las condiciones anteriores"
-  );
+//Condición 4 - ¿Es 2 mayor que 3? O ¿Es 4 menor que 5? - (2 > 3) || (4 < 5) -> false || true -> true
+if (2 > 3 || 4 < 5) console.log("Hago algo 4");
 
 /*
   EJERCICIO
 
-  Pedir al usuario que ingrese un número del 1 al 10.
-  Si ingresa un número menor o igual que 4, mostrar en pantalla un cartel rojo con el número elegido
-  Si ingresa un entre 4 y 6, mostrar en pantalla un cartel amarillo con el número elegido
-  Para el resto de los números, mostrar en pantalla un cartel amarillo con el número elegido
+  Pedir al usuario que ingrese su edad.
+  Si es mayor de 18 años, mostrar un cartel que diga "Usted es adulto";
+  Si es menor de 18 años y mayor de 13, mostrar un cartel que diga "Usted es adolescente";
+  Si es menor de 13 años, mostrar un cartel que diga "Usted es niño";
 
+  ¿Qué necesitamos?
+    -> Conocer la edad
+        -> var edad = prompt("Ingrese su edad");
+    -> Evaluar la edad
+        -> edad >= 18
+        -> edad >= 13 
+    -> Mostrar el cartel
+        -> Objeto HTML
+            -> Elemento HTML con id="cartel-edad"    
 
-  ¿Qué necesito?
-    -> Obtener el número
-    -> Mostrar el número
-        -> Verificar qué condición se cumple
-            -> <= 4
-            -> > 4 && <= 6
-        -> Copiar Objeto HTML
-            -> Crear elemento en documento HTML (ok)
 */
 
-var numElegido = parseInt(prompt("Ingrese un número del 1 al 10"));
-var divIf = document.querySelector("#if");
+// var edad = parseInt(prompt("Ingrese su edad utilizando números"));
+// console.log(edad, typeof edad, Number.isNaN(edad));
 
-if (numElegido <= 4) {
-  divIf.innerHTML = "<p class='cartel rojo'>" + numElegido + "</p>";
-} else if (numElegido > 4 && numElegido <= 6) {
-  divIf.innerHTML = "<p class='cartel amarillo'>" + numElegido + "</p>";
-} else divIf.innerHTML = "<p class='cartel verde'>" + numElegido + "</p>";
+// while (Number.isNaN(edad)) {
+//   edad = parseInt(prompt("Edad no válida. Ingrese su edad utilizando números"));
+// }
 
-document.getElementById("ternario").innerHTML =
-  numElegido <= 4
-    ? "<p class='cartel rojo'>" + numElegido + "</p>"
-    : numElegido > 4 && numElegido <= 6
-    ? "<p class='cartel amarillo'>" + numElegido + "</p>"
-    : "<p class='cartel verde'>" + numElegido + "</p>";
+// var cartelEdad = document.getElementById("cartel-edad");
+
+// if (edad >= 18) cartelEdad.innerText = "Usted es adulto";
+// else if (edad >= 13) cartelEdad.innerText = "Usted es adolescente";
+// else cartelEdad.innerText = "Usted es niño";
+
+//condición ? true : false
+// cartelEdad.innerText =
+//   edad >= 18 && edad <= 110 //1925 -> false
+//     ? "Usted es adulto"
+//     : edad >= 13 && edad <= 17 //1925 -> false
+//     ? "Usted es adolescente"
+//     : edad > 0 && edad < 13 //1925 -> false
+//     ? "Usted es niño"
+//     : "No es una edad válida";
+
+/*
+    Operador NOT (!)
+
+    Programa - Impedir que el usuario ingrese números si no son parte de un texto
+
+
+var texto = prompt("Ingrese un texto"); //"algo" | "6"
+//parseInt(texto) -> NaN | 6
+//Number.isNaN(texto) -> !true -> false | !false -> true
+
+while (!Number.isNaN(parseInt(texto))) {
+  texto = prompt("Un número solo no es un texto");
+}
+*/
+
+/*
+    Programa - Pedir al usuario que ingrese un número entre el 0 y el 6. Usar ese número para indicar un día la semana, asumiendo que 0 es Domingo y 6 es Sábado. Asegurarse que el valor ingresado no sea menor de 0 ni mayor de 6. El tipo de dato debe ser number.
+
+    ¿Qué necesitamos?
+        -> Obtener el dato
+        -> Validar el dato
+            -> Tiene que ser un número - !Number.isNaN(dato)
+            -> Tiene que ser mayor o igual de 0 - dato >= 0
+            -> Tiene que ser menor o igual a 6 - dato <= 6
+            -> 
+        -> Indicar el día de la semana
+            -> Mostrar en pantalla el resultado (Objeto HTML)    
+
+
+    Procesar un dato
+        -> Se generan una serie de acciones que permiten saber qué valor obtendremos si leemos el dato en una instancia posterior
+
+
+var numDia = parseInt(prompt("Ingrese un número del 0 al 6"));
+
+while (Number.isNaN(numDia) || numDia < 0 || numDia > 6) {
+  numDia = parseInt(prompt("Dato no válido. Ingrese un número del 0 al 6"));
+}
+
+//En el final de la secuencia de pasos vamos a tener un dato de tipo number con valor entre 0 y 6
+console.log(numDia); //Dato procesado cuyo valor puede ser 0, 1, 2, 3, 4, 5, 6
+*/
+/*
+    key => Variable que almacena el dato previamente procesado
+    value => Uno de los posibles valores que puede almacenar la variable
+    break => Le indica JS que ya no tiene que seguir trabajando en el switch
+    default (no es obligatorio) => Se ejecuta cuando ninguna de los case se ejecuta
+
+    switch (key) {
+        case value:
+            
+            break;
+
+        default:
+            break;
+    }
+
+
+var cartelDia = document.querySelector(".cartel-dia");
+
+switch (numDia) {
+  case 1:
+    cartelDia.innerHTML = "<p>Hoy es lunes</p>";
+    break;
+  case 2:
+    cartelDia.innerHTML = "<p>Hoy es martes</p>";
+    break;
+  case 3:
+    cartelDia.innerHTML = "<p>Hoy es miércoles</p>";
+    break;
+  case 4:
+    cartelDia.innerHTML = "<p>Hoy es jueves</p>";
+    break;
+  case 5:
+    cartelDia.innerHTML = "<p>Hoy es viernes</p>";
+    break;
+  case 6:
+    cartelDia.innerHTML = "<p>Hoy es sábado</p>";
+    break;
+  case 0:
+    cartelDia.innerHTML = "<p>Hoy es domingo</p>";
+    break;
+
+  default:
+    //Cartel de error para el usuario final
+    break;
+}
+*/
+
+/*
+    Objeto Date
+        => Herramienta que permite que trabajemos con la fecha y la hora del dispositivo del usuario que visita el sitio web
+*/
+
+var objDate = new Date(); //Crear la copia del Objeto Date y guardarla en la variable objDate
+console.log(objDate);
+console.log("Número del día en la semana", objDate.getDay()); //0 - 6
+console.log("Número del día en el mes", objDate.getDate());
+console.log("Fecha", objDate.toLocaleDateString());
+console.log("Hora", objDate.toTimeString());
+
+var cartelDia = document.querySelector(".cartel-dia");
+var numDia = objDate.getDay();
+
+switch (numDia) {
+  case 1:
+    cartelDia.innerHTML = "<p>Hoy es lunes</p>";
+    break;
+  case 2:
+    cartelDia.innerHTML = "<p>Hoy es martes</p>";
+    break;
+  case 3:
+    cartelDia.innerHTML = "<p>Hoy es miércoles</p>";
+    break;
+  case 4:
+    cartelDia.innerHTML = "<p>Hoy es jueves</p>";
+    break;
+  case 5:
+    cartelDia.innerHTML = "<p>Hoy es viernes</p>";
+    break;
+  case 6:
+    cartelDia.innerHTML = "<p>Hoy es sábado</p>";
+    break;
+  case 0:
+    cartelDia.innerHTML = "<p>Hoy es domingo</p>";
+    break;
+
+  default:
+    //Cartel de error para el usuario final
+    break;
+}
+
+/*
+    EJERCICIO
+
+    Mostrar un cartel que indique si puede o no ingresar al sitio. Para ingresar debe ser mayor de edad o estar registrado 
+    
+    ¿Qué necesitamos?
+        -> La edad del usuario
+        -> Saber si está registrado
+        -> Evaluar los datos
+            -> Es mayor de edad?
+            -> Está registrado?
+        -> Mostrar el cartel
+            -> Estado correcto
+                -> Si es mayor edad o es está registrado
+            -> Estado incorrecto
+                -> Si es menor y no está registrado
+*/
+
+var edad = parseInt(prompt("Ingrese su edad"));
+var registrado = confirm("¿Está registrado?"); //aceptar = true | cancelar = false
+
+while (Number.isNaN(edad)) {
+  edad = parseInt(prompt("Edad no válida. Ingrese su edad utilizando números"));
+}
+
+if (registrado || edad >= 18) console.log("Cartel de ingreso exitoso");
+else console.log("Cartel de ingreso fallido");
