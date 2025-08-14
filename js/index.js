@@ -1,6 +1,6 @@
 /*
   Espacios de Almacenamiento
-    => variables - Cajas que guardan un dato
+    => Variables - Cajas que guardan un dato
       -> Simples - number, string, boolean, etc
       -> Compuestos - array y objetos literales
         -> Arrays - Cajas que guardan datos válidos en JS
@@ -10,173 +10,169 @@
           -> Longitud - Cantidad de datos que se almacenan dentro del Array  
         -> Objetos Literales
           -> Clave (key) - Nombre con el que identificamos al cajón
-    => funciones
+    => Funciones (acción) - Caja que tiene una etiqueta para identificarla y guarda bloque de código
+      => Declaración - Construir la caja, ponerle la etiqueta para identificarla y guardar el Bloque de código
+      => Ejecución - Usar el Bloque de código almacenado en la caja
+        -> () === Ejecutar la función
+          -> nombreDeFunción -> Saber que hay en el espacio de memoria
+          -> nombreDeFunción() -> Realizar las acciones correspondientes
 
 
-  POO (Programación Orientada a Objetos)
-    => Clases - Plantilla
-    => Objetos - Copia de la plantilla
-      -> Objeto HTML 
-      -> Objeto Date
+    Bloque de código 
+      => Toda sentencia (o conjunto de sentencias) que se encuentran dentro de llaves
+
+    Sentencia - Oración
+      => Unidad mínima de la programación  
 */
 
-// Arrays
-console.log("Array");
+console.log("elemento h1", document.querySelector("h1"));
 
-var miVar;
-miVar = 1;
+var miVar; // Declaración -> Crear espacio de memoria y nombrarlo para identificarlo y acceder al mismo en instancias posteriores
 
-var unArr = []; //Crear array vacío
-console.log(unArr); //Mostrar en consola el contenido de la variable unArr - Array [] (array vacío)
-
-unArr.push("Nuevo dato"); //array.push(dato) -> Agrega un dato al final del array
-console.log(unArr); //Mostrar en consola el contenido de la variable unArr - Array ["Nuevo dato"] (array que almacena el dato de tipo string "Nuevo dato")
-
-//Longitud: 3
-//Índices: 0, 1, 2
-var arr = ["Dato 1", "Dato 2", "Dato 3"];
-console.log(arr); //Array(3) ["Dato 1", "Dato 2", "Dato 3"];
-
-console.log(arr[0]); //Mostrar en la consola el contenido del cajón etiquetado como 0 que se encuentra en el Array guardado en la variable arr
-
-arr[1] = "Dato 2 - Modificado";
-console.log(arr);
-
-// Objeto Literal
-console.log(" ");
-console.log("Objeto Literal");
-var obj = {}; //Crear un objeto vacío
-console.log(obj); //Mostrar en la consola el contenido de la variable obj
-
-obj.unDato = "Nuevo dato";
-console.log(obj); //Mostrar en la consola el contenido de la variable obj
-
-var unObj = {
-  nombre: "Pepe",
-  edad: 35,
-};
-console.log(unObj);
-
-//Acceso al dato mediante notación de punto
-console.log(unObj.nombre); //Mostrar en consola qué hay en la clave nombre del Objeto almacenado en la variable obj
-
-unObj.nombre = "Pepa";
-console.log(unObj.nombre);
-
-//Acceso al dato mediante notación de corchete
+miVar = "Un valor"; // Asignación -> Acceder al espacio de memoria <<miVar>> y almacenar el dato "Un valor"
 
 /*
-  Programa - Pedir al usuario que ingrese el número 1 si quiere ver el nombre y el 2 si quiere ver la edad
+  Funciones
+*/
 
-
-  ¿Qué necesito?
-    -> Pedir el número
-      -> prompt
-    -> Validar el dato
-      -> Convertir el dato a number
-      -> No debe ser NaN
-      -> Debe ser 1 o 2
-    -> Usar el número validado para almacenar en una variable el nombre de la clave del Objeto almacenado en unObj que corresponda
-      -> 1 - "nombre"
-      -> 2 - "edad"
-    -> Mostrar en pantalla el valor elegido
-
-
-var numIngresado = parseInt(
-  prompt(
-    "Ingrese el número 1 si quiere ver el nombre. El 2 si quiere ver la edad"
-  )
-);
-
-while (
-  Number.isNaN(numIngresado) ||
-  (numIngresado !== 1 && numIngresado !== 2)
-) {
-  numIngresado = parseInt(
-    prompt(
-      "Número inválido. Ingrese el número 1 si quiere ver el nombre. El 2 si quiere ver la edad"
-    )
-  );
+// Declaración
+function saludar() {
+  // La acción que quiero que se realize (Bloque de código) cuando ejecuto la función
+  console.log("Hola desde función saludar");
 }
 
-var clave;
+// Ejecución
+console.log(saludar); // Quiero saber qué hay guardado en la caja con el nombre saludar
 
-if (numIngresado === 1) clave = "nombre";
-if (numIngresado === 2) clave = "edad";
-
-if (!clave) console.log("Error en el programa");
-else console.log("Valor elegido por el usuario", unObj[clave]);
-*/
-
-/*  
-  Estructuras de Control de Flujo - Usan condiciones para saber si realizan]/repiten una acción
-      => Condicionales - Escribimos condiciones con intención de obtener un true
-          -> if/else
-              -> Podemos no escribir el else
-              -> Si solo vamos a usar una sentencia podemos no escribir las llaves    
-              -> if/else if/else
-                  => Se usa cuando queremos hacer más de una pregunta con acciones distintas para cada respuesta 
-                  => Se realiza la acción del primer elemento cuya condición es true
-          -> Operador Ternario
-              -> condición ? true : false
-              -> No puedo ignorar el else
-              -> No puedo poner más de una sentencia    
-              -> Puedo guardar el resultado en una variable
-          -> Switch    
-              -> Evaluar un dato PREVIAMENTE procesado del que se conocen los posibles valores
-      => Bucles - Escribimos condiciones que indican si debe repetirse el bloque o no. El bloque se va a repetir SIEMPRE que la condición sea true
-          -> for - Ideal para "recorrer" Arrays
-          -> while - Ideal para hacer validaciones
-          -> do-while - Ideal para solicitar datos       
-*/
+saludar();
+saludo();
 
 /*
-  Bucle for
+  Formas de trabajar con funciones
+    -> Funciones que no reciben parámetros ni retornan valor
+    -> Funciones que reciben parámetros pero no retornan valor
+    -> Funciones que reciben parámetros y retornan valor
+    -> Funciones que no reciben parámetros pero retornan valor
 
-  for (inicializador, condición, modificador) {
-    // Código a ejecutarse mientras la condición sea true
+  Parámetro - Se agrega en la declaración de la función
+    -> Espacio de memoria propio de ESA ejecución de la función
+    -> "Variable" que guarda datos para ESA ejecución de la función  
+
+  Argumento - Se agrega en la ejecución de la función
+    -> Valor que se almacena en el Parámetro  
+    -> Los argumentos se pasan de forma secuencial. No puedo pasar el segundo si no paso el primero
+    -> El orden de los argumentos altera el producto
+
+  return - Palabra reservada que permite sacar un valor del espacio de memoria que lo contiene
+    ->   
+
+
+  LAS FUNCIONES CREAN SU PROPIO ESPACIO DE MEMORIA  
+*/
+
+// Funciones que no reciben parámetros ni retornan valor
+function fnSinParams() {
+  console.log("En la declaración no tiene 'Variable'. No tiene parámetros");
+}
+
+// Funciones que reciben parámetros pero no retornan valor
+
+var otraVar;
+console.log(otraVar);
+otraVar = "algo";
+console.log(otraVar);
+
+function saludarConNombre(nombre) {
+  console.log("Hola, " + nombre);
+}
+
+saludarConNombre("Anahí"); // Una ejecución
+saludarConNombre("Pepe"); // Otra ejecución
+
+function sumar2(num1, num2) {
+  console.log(num1 + num2);
+}
+
+sumar2(2, 2); //4
+sumar2(5, 5); //10
+
+function restar2(num1, num2) {
+  console.log(num1 - num2);
+}
+
+restar2(1, 2); //num1: 1, num2: 2 ->  -1
+restar2(2, 1); //num1: 2, num2: 1 ->  1
+
+/*
+
+  Scope (Alcance)
+    -> Qué puedo utilizar según dónde estoy trabajando
+
+  Scope de la variable
+    -> Qué variable puedo utilizar según dónde estoy trabajando
+    -> ¿Dónde está guardada la variable?
+      -> Variable global
+      -> Variable local
+    -> Variable global - Puede ser usada por cualquier elemento del programa
+    -> Variable local - Puede ser usada solo en la función en la que se declara
+
+
+  TODO ELEMENTO TIENE ACCESO AL ESPACIO DE MEMORIA QUE LO CONTIENE 
+  NINGÚN ELEMENTO PUEDE ACCEDER AL ESPACIO DE MEMORIA DE OTRO ELEMENTO QUE NO SEA SU CONTENEDOR 
+  NINGÚN ELEMENTO PUEDE ACCEDER AL ESPACIO DE MEMORIA DE UN ELEMENTO CONTENIDO
+*/
+
+var variableGlobal = "Soy global";
+
+function miFn() {
+  var variableLocal = "Soy local";
+  console.log(variableGlobal);
+
+  function unaFn() {
+    console.log("unaFn", variableGlobal);
+    console.log("unaFn", variableLocal);
   }
-*/
-console.log(" ");
-console.log("Bucle for");
 
-//Longitud: 4
-//Índices: 0, 1, 2, 3
-var colores = ["Rojo", "Amarillo", "Verde"];
-console.log(
-  "Longitud del Array almacenado en la variable colores:",
-  colores.length
-);
-
-var lista = document.querySelector(".colores");
-
-var longitud = colores.length;
-for (var i = 0; i < longitud; i++) {
-  lista.innerHTML += "<li>" + colores[i] + "</li>";
+  unaFn();
 }
 
-var numeros = [8, 5, 9];
-var acumulado = 0;
-var totalNotas = numeros.length;
+miFn();
 
-for (var i = 0; i < totalNotas; i++) {
-  acumulado += numeros[i];
+function otraFn() {
+  // console.log(variableLocal); //ReferenceError: variableLocal is not defined
 }
 
-var promedio = acumulado / totalNotas;
-console.log(promedio);
+otraFn();
+// console.log(variableLocal); //ReferenceError: variableLocal is not defined
 
-// do-while
-console.log(" ");
-console.log("Bucle do-while");
-
-while (false) {
-  console.log("Código dentro del while");
+// Función que no recibe parámetro y retorna valor
+function obtenerNumRandom() {
+  var random = Math.random(); //0 ... 0.999999999...
+  random *= 10; // 0 .. 1.99999999
+  random = Math.round(random);
+  return random;
 }
 
-do {
-  console.log("Código dentro del do-while");
-} while (false);
+// var miRandom = obtenerNumRandom();
+
+var p = document.getElementById("random");
+// p.innerText = miRandom;
+p.innerText = obtenerNumRandom();
+
+console.log("random 1", obtenerNumRandom());
+console.log("random 2", obtenerNumRandom());
+console.log("random 3", obtenerNumRandom());
+
+// Función que recibe parámetro y retorna valor
+function sumar(num1, num2) {
+  // var resultado = num1 + num2;
+  // return resultado;
+  return num1 + num2;
+}
+
+console.log("suma 1", sumar(2, 2));
+console.log("suma 2", sumar(3, 2));
+console.log("suma 3", sumar(4, 2));
 
 /*
   Programa - Permitir el "almacenaje" de usuarios y mostrar en pantalla la lista de todos los usuarios ingresados. No debe haber 2 usuarios con el mismo nombre. Ningún usuario puede tener la contraseña vacía. Se debe ingresar, al menos 1 usuario completo. No hay límite a la cantidad de usuarios a ingresar.
@@ -191,41 +187,25 @@ do {
     -> Validaciones
       -> Nombre no debe repetirse entre usuarios
       -> Contraseña no puede estar vacía    
+
+  Dividir el programa en tareas
+    -> Almacenar usuarios
+      -> 
+    -> Mostrar usuarios   
 */
 
-var listaUsuarios = [];
+//"Armar BD"
+var listaUsuarios = []; //Scope de la variable: Global
 
 //Almacenar usuarios
 do {
-  var usuario = { nombre: "", password: "" };
-
-  usuario.nombre = prompt("Ingrese nombre de usuario");
-  for (var i = 0; i < listaUsuarios.length; i++) {
-    var usuarioEnLista = listaUsuarios[i];
-
-    while (usuario.nombre === usuarioEnLista.nombre) {
-      usuario.nombre = prompt("Nombre repetido. Ingrese otro nombre");
-    }
-  }
-
-  usuario.password = prompt("Ingrese la contraseña");
-  while (!usuario.password) {
-    usuario.password = prompt(
-      "Contraseña vacía. Ingrese una contraseña válida"
-    );
-  }
-
+  // Crear usuario
+  var usuario = crearUsuario();
+  // Guardar usuario
   listaUsuarios.push(usuario);
-
+  // listaUsuarios.push(crearUsuario());
   var continuar = confirm("Ingresar otro usuario?");
 } while (continuar);
 
 //Mostrar usuarios almacenados
-var tbody = document.getElementById("usuarios");
-
-for (var i = 0; i < listaUsuarios.length; i++) {
-  var usuario = listaUsuarios[i];
-
-  tbody.innerHTML +=
-    "<tr><td>" + usuario.nombre + "</td><td>" + usuario.password + "</td></tr>";
-}
+mostrarUsuarios();
