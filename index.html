@@ -7,29 +7,35 @@
     <title>Digitalers</title>
 
     <link rel="stylesheet" href="css/index.css">
+
+    <!-- Ejecución asincrónica del Código JS -->
+    <script src="js/eventoDomLoaded.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Clase 22</h1>
+        <h1>Clase 23</h1>
     </header>
     <main>
         <section>
-            <h2>String literals</h2>
-            <ul id="colores"></ul>
-        </section>
-        <section>
-            <h2>Eventos</h2>
-            <button id="btn">Hace click 1</button>
-            <button>Hace click 2</button>
-            <button class="btn">Mostrar lista de colores</button>
-            <ul class="colores"></ul>
+            <h2>Eventos del DOM</h2>
+            <button id="btn">Hacer click</button>
+
+            <section id="agregarElementos">
+                <h3>Agregar nuevos elemento desde JS</h3>
+            </section>
+
+            <h3>Evento Input</h3>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <p id="nombreIngresado"></p>
         </section>
     </main>
     <footer>
         &copy; Todos los derechos reservados
     </footer>
 
+    <script src="js/cbsEventoInput.js"></script>
     <script src="js/index.js"></script>
 </body>
 
