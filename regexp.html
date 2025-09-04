@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones Regulares para Principiantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #7209b7;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7ff 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .concept-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 1.2rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .example-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+
+        .regex-pattern {
+            color: var(--warning);
+            font-weight: bold;
+            background-color: #fff3cd;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .demo-area {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid #ced4da;
+        }
+
+        .test-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .test-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn-regex {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 500;
+        }
+
+        .btn-regex:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-box {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--success);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .match {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .no-match {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .special-char {
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .explanation {
+            background-color: #e9ecef;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .cheatsheet {
+            background: linear-gradient(135deg, #4cc9f0 0%, var(--primary) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--dark), #2c3e50);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Expresiones Regulares para Principiantes</h1>
+            <p class="lead fs-4">Aprende a usar Regex de manera sencilla y práctica</p>
+            <div class="mt-3">
+                <span class="badge bg-light text-dark fs-6 me-2">JavaScript</span>
+                <span class="badge bg-light text-dark fs-6 me-2">Pattern Matching</span>
+                <span class="badge bg-light text-dark fs-6">Validación</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Introducción -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="alert alert-info border-0 shadow-sm">
+                    <h4 class="alert-heading">¿Qué son las Expresiones Regulares?</h4>
+                    <p class="mb-0">Las expresiones regulares (regex) son patrones que se utilizan para hacer coincidir
+                        combinaciones de caracteres en cadenas de texto. Son como <strong>"fórmulas mágicas"</strong>
+                        para buscar, validar y manipular texto.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concepto 1: Sintaxis básica -->
+        <div class="concept-card">
+            <div class="card-header">1. Sintaxis Básica de Regex</div>
+            <div class="card-body">
+                <p>Las regex se escriben entre barras <span class="regex-pattern">/patrón/</span> o se crean con el
+                    constructor <span class="regex-pattern">new RegExp()</span>.</p>
+
+                <div class="example-box">
+                    // Forma literal (recomendada)<br>
+                    const regex1 = /abc/;<br><br>
+
+                    // Usando constructor<br>
+                    const regex2 = new RegExp('abc');<br><br>
+
+                    // Con flags (banderas)<br>
+                    const regex3 = /abc/i; // 'i' para case-insensitive<br>
+                    const regex4 = /abc/g; // 'g' para búsqueda global
+                </div>
+
+                <div class="explanation">
+                    <h6>📝 Flags más comunes:</h6>
+                    <ul class="mb-0">
+                        <li><span class="highlight">i</span> - Ignorar mayúsculas/minúsculas</li>
+                        <li><span class="highlight">g</span> - Búsqueda global (todas las coincidencias)</li>
+                        <li><span class="highlight">m</span> - Multilínea</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concepto 2: Caracteres especiales -->
+        <div class="concept-card">
+            <div class="card-header">2. Caracteres Especiales y Metacaracteres</div>
+            <div class="card-body">
+                <p>Los caracteres especiales dan superpoderes a tus búsquedas:</p>
+
+                <div class="example-box">
+                    <span class="special-char">.</span> - Cualquier carácter (excepto nueva línea)<br>
+                    <span class="special-char">\d</span> - Cualquier dígito (0-9)<br>
+                    <span class="special-char">\w</span> - Cualquier carácter de palabra (a-z, A-Z, 0-9, _)<br>
+                    <span class="special-char">\s</span> - Cualquier espacio en blanco<br>
+                    <span class="special-char">^</span> - Inicio de la cadena<br>
+                    <span class="special-char">$</span> - Fin de la cadena<br>
+                    <span class="special-char">[abc]</span> - Cualquier carácter entre los brackets<br>
+                    <span class="special-char">[a-z]</span> - Cualquier carácter en el rango<br>
+                    <span class="special-char">(abc)</span> - Grupo de caracteres
+                </div>
+
+                <div class="demo-area">
+                    <h5>🔍 Probemos algunos patrones:</h5>
+                    <input type="text" class="test-input" id="testInput" placeholder="Escribe algo para probar..."
+                        value="Hola123">
+
+                    <div class="d-flex flex-wrap">
+                        <button class="btn-regex" onclick="testPattern(/\d+/)">Existen números (\d+)</button>
+                        <button class="btn-regex" onclick="testPattern(/^\d+$/)">Solo números (^\d+$)</button>
+                        <button class="btn-regex" onclick="testPattern(/[A-Z]/)">Existen mayúsculas ([A-Z])</button>
+                        <button class="btn-regex" onclick="testPattern(/ ^[A-Z]$/)">Sólo mayúsculas (^[A-Z]$)</button>
+                        <button class="btn-regex" onclick="testPattern(/^Hola/)">Empieza con 'Hola' (^Hola)</button>
+                    </div>
+
+                    <div class="result-box" id="resultBox">
+                        Resultado aparecerá aquí...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concepto 3: Cuantificadores -->
+        <div class="concept-card">
+            <div class="card-header">3. Cuantificadores: Especificando Cantidades</div>
+            <div class="card-body">
+                <p>Los cuantificadores controlan cuántas veces aparece un carácter o grupo:</p>
+
+                <div class="example-box">
+                    <span class="special-char">*</span> - 0 o más veces<br>
+                    <span class="special-char">+</span> - 1 o más veces<br>
+                    <span class="special-char">?</span> - 0 o 1 vez (opcional)<br>
+                    <span class="special-char">{n}</span> - Exactamente n veces<br>
+                    <span class="special-char">{n,}</span> - n o más veces<br>
+                    <span class="special-char">{n,m}</span> - Entre n y m veces
+                </div>
+
+                <div class="demo-area">
+                    <h5>🎯 Ejemplos prácticos:</h5>
+                    <input type="text" class="test-input" id="quantifierInput"
+                        placeholder="Prueba: 123, abc, aaabbb, etc." value="aaabbb">
+
+                    <div class="d-flex flex-wrap">
+                        <button class="btn-regex" onclick="testQuantifier(/a+b+/)">a's seguido de b's (a+b+)</button>
+                        <button class="btn-regex" onclick="testQuantifier(/\d{3}/)">3 dígitos exactos (\d{3})</button>
+                        <button class="btn-regex" onclick="testQuantifier(/colou?r/)">'color' o 'colour'
+                            (colou?r)</button>
+                    </div>
+
+                    <div class="result-box" id="quantifierResult">
+                        Prueba los patrones...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concepto 4: Usos comunes -->
+        <div class="concept-card">
+            <div class="card-header">4. Usos Comunes de Regex</div>
+            <div class="card-body">
+                <p>Las regex son increíblemente útiles para:</p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="explanation">
+                            <h6>✅ Validación de formularios:</h6>
+                            <div class="example-box">
+                                // Email<br>
+                                /^[^\s@]+@[^\s@]+\.[^\s@]+$/<br><br>
+
+                                // Teléfono (ejemplo simple)<br>
+                                /^\d{9}$/
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="explanation">
+                            <h6>🔍 Búsqueda y extracción:</h6>
+                            <div class="example-box">
+                                // Extraer precios<br>
+                                /\$\d+\.\d{2}/<br><br>
+
+                                // Buscar fechas<br>
+                                /\d{2}\/\d{2}\/\d{4}/
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-area">
+                    <h5>📧 Validador de Email:</h5>
+                    <input type="text" class="test-input" id="emailInput" placeholder="tu@email.com"
+                        value="usuario@ejemplo.com">
+
+                    <button class="btn-regex" onclick="validateEmail()">Validar Email</button>
+
+                    <div class="result-box" id="emailResult">
+                        Introduce un email para validar...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cheatsheet -->
+        <div class="cheatsheet">
+            <h3 class="text-center mb-4">📋 Cheatsheet Rápido</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Caracteres especiales</h5>
+                    <ul class="list-unstyled">
+                        <li><code>.</code> Cualquier carácter</li>
+                        <li><code>\d</code> Dígito</li>
+                        <li><code>\w</code> Carácter de palabra</li>
+                        <li><code>\s</code> Espacio</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Cuantificadores</h5>
+                    <ul class="list-unstyled">
+                        <li><code>*</code> 0 o más</li>
+                        <li><code>+</code> 1 o más</li>
+                        <li><code>?</code> 0 o 1</li>
+                        <li><code>{n}</code> Exactamente n</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Posición</h5>
+                    <ul class="list-unstyled">
+                        <li><code>^</code> Inicio</li>
+                        <li><code>$</code> Fin</li>
+                        <li><code>\b</code> Límite de palabra</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consejos finales -->
+        <div class="concept-card">
+            <div class="card-header">💡 Consejos para Principiantes</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="explanation">
+                            <h6>✅ Empieza simple</h6>
+                            <p>Comienza con patrones básicos y ve aumentando la complejidad gradualmente.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="explanation">
+                            <h6>🛠 Usa herramientas</h6>
+                            <p>Sitios como regex101.com te ayudan a probar y debuggar tus expresiones.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="explanation">
+                            <h6>🧪 Testea mucho</h6>
+                            <p>Prueba tus regex con diferentes inputs para asegurarte de que funcionan correctamente.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="explanation">
+                            <h6>📚 Aprende gradualmente</h6>
+                            <p>No intentes aprender todo a la vez. Domina un concepto antes de pasar al siguiente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="fs-5">¡Las expresiones regulares son como un superpoder para manipular texto! 🦸‍♂️</p>
+            <p class="mb-0">© 2025 - Aprende Regex paso a paso</p>
+        </div>
+    </footer>
+
+    <script>
+        // Función para probar patrones básicos
+        function testPattern(pattern) {
+            const input = document.getElementById('testInput').value;
+            const resultBox = document.getElementById('resultBox');
+            const testResult = pattern.test(input);
+
+            if (testResult) {
+                resultBox.innerHTML = `<span class="match">✓ COINCIDE</span> con el patrón <span class="regex-pattern">${pattern}</span>`;
+                resultBox.style.borderLeftColor = '#28a745';
+            } else {
+                resultBox.innerHTML = `<span class="no-match">✗ NO COINCIDE</span> con el patrón <span class="regex-pattern">${pattern}</span>`;
+                resultBox.style.borderLeftColor = '#dc3545';
+            }
+        }
+
+        // Función para probar cuantificadores
+        function testQuantifier(pattern) {
+            const input = document.getElementById('quantifierInput').value;
+            const resultBox = document.getElementById('quantifierResult');
+            const match = input.match(pattern);
+
+            if (match) {
+                resultBox.innerHTML = `<span class="match">✓ COINCIDE:</span> "${match[0]}"<br>
+                                       <span>Patrón: <span class="regex-pattern">${pattern}</span></span>`;
+                resultBox.style.borderLeftColor = '#28a745';
+            } else {
+                resultBox.innerHTML = `<span class="no-match">✗ NO COINCIDE</span> con el patrón <span class="regex-pattern">${pattern}</span>`;
+                resultBox.style.borderLeftColor = '#dc3545';
+            }
+        }
+
+        // Función para validar email
+        function validateEmail() {
+            const email = document.getElementById('emailInput').value;
+            const resultBox = document.getElementById('emailResult');
+
+            // Patrón simple para email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailPattern.test(email)) {
+                resultBox.innerHTML = `<span class="match">✓ EMAIL VÁLIDO</span><br>
+                                       <small>${email}</small>`;
+                resultBox.style.borderLeftColor = '#28a745';
+            } else {
+                resultBox.innerHTML = `<span class="no-match">✗ EMAIL INVÁLIDO</span><br>
+                                       <small>Formato correcto: usuario@dominio.ext</small>`;
+                resultBox.style.borderLeftColor = '#dc3545';
+            }
+        }
+    </script>
+</body>
+
+</html>
