@@ -1,0 +1,13 @@
+{
+  "id": "1",
+  "nombre": "Pepe",
+  "pass": "1234"
+}
+
+/*
+  Equivalente XML
+
+  <id>1</id>
+  <nombre>Pepe</nombre>
+  <pass>1234</pass>
+*/

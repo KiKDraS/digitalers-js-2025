@@ -5,6 +5,8 @@ function asincronia() {
 
 
     Asincronía - Capacidad de esperar que una acción termine, sin bloquear el resto de las acciones
+        -> setTimeout(cb, ms);
+          -> Función propia de JS que permite retrasar la ejecución de una función en Xms
         -> JS es un lenguaje sincrónico single threaded === No puede realizar más de una acción al mismo tiempo
         -> https://www.jsv9000.app/
   */
@@ -34,4 +36,6 @@ function asincronia() {
     uno();
     console.log("Fin");
   }
+
+  program();
 }
