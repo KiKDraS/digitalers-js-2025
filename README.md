@@ -76,4 +76,4 @@
 
 ---
 
-📝 **Nota:** Esta tabla es válida para aplicaciones web modernas (2024).
+📝 **Nota:** Esta tabla es válida para aplicaciones web modernas.
