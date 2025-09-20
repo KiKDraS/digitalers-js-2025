@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase31\\Clase31\\Clase31.csproj": {}
+    "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase32\\Clase32.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase31\\Clase31\\Clase31.csproj": {
+    "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase32\\Clase32.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase31\\Clase31\\Clase31.csproj",
-        "projectName": "Clase31",
-        "projectPath": "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase31\\Clase31\\Clase31.csproj",
+        "projectUniqueName": "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase32\\Clase32.csproj",
+        "projectName": "Clase32",
+        "projectPath": "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase32\\Clase32.csproj",
         "packagesPath": "C:\\Users\\anahi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase31\\Clase31\\obj\\",
+        "outputPath": "C:\\Users\\anahi\\OneDrive\\Documentos\\digitalers\\digitalers-js-2025\\Clase32\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anahi\\AppData\\Roaming\\NuGet\\NuGet.Config",
