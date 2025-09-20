@@ -1,0 +1,15 @@
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\bin\Debug\net8.0\Clase31.exe
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\bin\Debug\net8.0\Clase31.deps.json
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\bin\Debug\net8.0\Clase31.runtimeconfig.json
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\bin\Debug\net8.0\Clase31.dll
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\bin\Debug\net8.0\Clase31.pdb
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\Clase31.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\Clase31.AssemblyInfoInputs.cache
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\Clase31.AssemblyInfo.cs
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\Clase31.csproj.CoreCompileInputs.cache
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\Clase31.sourcelink.json
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\Clase31.dll
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\refint\Clase31.dll
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\Clase31.pdb
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\Clase31.genruntimeconfig.cache
+C:\Users\anahi\OneDrive\Documentos\digitalers\digitalers-js-2025\Clase31\Clase31\obj\Debug\net8.0\ref\Clase31.dll
