@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Funcional - Guía Visual</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.4em;
+            opacity: 0.9;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin: 20px 0 10px 0;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            border-left: 4px solid var(--success);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge.success {
+            background: var(--success);
+        }
+
+        .badge.warning {
+            background: var(--warning);
+        }
+
+        .badge.accent {
+            background: var(--accent);
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-item {
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+        }
+
+        .imperative {
+            border-color: var(--accent);
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .functional {
+            border-color: var(--success);
+            background: rgba(39, 174, 96, 0.1);
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .demo-output {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 100px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .visual-explanation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .visual-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .visual-item i {
+            font-size: 3em;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .interactive-code {
+            background: #2c3e50;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+
+        .interactive-code .code-line {
+            margin: 8px 0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interactive-code .code-line:hover {
+            background: #34495e;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🧠 Programación Funcional</h1>
+            <p class="subtitle">Una guía visual para entender los conceptos fundamentales</p>
+        </header>
+
+        <div class="card-grid">
+            <!-- Concepto 1 -->
+            <div class="card">
+                <h2>🎯 Funciones Puras</h2>
+                <p>Las funciones puras siempre devuelven el mismo resultado para los mismos argumentos y no tienen
+                    efectos secundarios.</p>
+
+                <div class="code-block">
+                    <pre><code>
+                        // ✅ FUNCIÓN PURA
+                        function sumar(a, b) {
+                        &nbsp;&nbsp;return a + b;
+                        }
+                        <br>
+                        // ❌ FUNCIÓN IMPURA
+                        let contador = 0;
+                        function incrementar() {
+                        &nbsp;&nbsp;contador++; // Efecto secundario!
+                        &nbsp;&nbsp;return contador;
+                        }
+                    </code></pre>
+                </div>
+
+                <div class="badge success">Predecible</div>
+                <div class="badge success">Fácil de testear</div>
+                <div class="badge success">Sin sorpresas</div>
+            </div>
+
+            <!-- Concepto 2 -->
+            <div class="card">
+                <h2>🔄 Inmutabilidad</h2>
+                <p>Los datos no se modifican, se crean nuevos datos. Como trabajar con documentos: no borras el
+                    original, creas una copia con cambios.</p>
+
+                <div class="code-block">
+                    <pre><code>
+                        // ❌ MUTACIÓN (Malo)
+                        const array = [1, 2, 3];
+                        array.push(4); // Modifica el original
+                        <br>
+                        // ✅ INMUTABILIDAD (Bueno)
+                        const array = [1, 2, 3];
+                        const nuevoArray = [...array, 4]; // Nuevo array
+                        
+                        console.log(array); // [1, 2, 3] ← Original intacto!
+                        console.log(nuevoArray); // [1, 2, 3, 4]
+                    </code></pre>
+                </div>
+            </div>
+
+            <!-- Concepto 3 -->
+            <div class="card">
+                <h2>🎭 First-Class Functions</h2>
+                <p>Las funciones son tratadas como cualquier otro valor: pueden ser asignadas a variables, pasadas como
+                    argumentos y retornadas desde otras funciones.</p>
+
+                <div class="code-block">
+                    <pre><code>
+                        // Las funciones son ciudadanas de primera clase
+                        const duplicar = x => x * 2;
+                        const triplicar = x => x * 3;
+                        <br>
+                        // Función que acepta otra función
+                        function aplicarOperacion(numero, operacion) {
+                        &nbsp;&nbsp;return operacion(numero);
+                        }
+                        
+                        console.log(aplicarOperacion(5, duplicar)); // 10
+                        console.log(aplicarOperacion(5, triplicar)); // 15
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparación Imperativo vs Funcional -->
+        <div class="demo-section">
+            <h2>⚔️ Imperativo vs Funcional</h2>
+            <p>Compara cómo resolveríamos el mismo problema de dos maneras diferentes:</p>
+
+            <div class="comparison">
+                <div class="comparison-item imperative">
+                    <h3>🔧 Estilo Imperativo</h3>
+                    <p><em>"CÓMO hacerlo" - Paso a paso</em></p>
+                    <div class="code-block">
+                        // Duplicar números pares de un array<br>
+                        const numeros = [1, 2, 3, 4, 5];<br>
+                        const resultado = [];<br>
+                        <br>
+                        for (let i = 0; i < numeros.length; i++) {<br>
+                            &nbsp;&nbsp;if (numeros[i] % 2 === 0) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;resultado.push(numeros[i] * 2);<br>
+                            &nbsp;&nbsp;}<br>
+                            }<br>
+                            <br>
+                            console.log(resultado); // [4, 8]
+                    </div>
+                </div>
+
+                <div class="comparison-item functional">
+                    <h3>🎨 Estilo Funcional</h3>
+                    <p><em>"QUÉ queremos" - Declarativo</em></p>
+                    <div class="code-block">
+                        // Duplicar números pares de un array<br>
+                        const numeros = [1, 2, 3, 4, 5];<br>
+                        <br>
+                        const resultado = numeros<br>
+                        &nbsp;&nbsp;.filter(n => n % 2 === 0)<br>
+                        &nbsp;&nbsp;.map(n => n * 2);<br>
+                        <br>
+                        console.log(resultado); // [4, 8]
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Las 3 Super Herramientas -->
+        <div class="demo-section">
+            <h2>🛠️ Las 3 Super Herramientas de la PF</h2>
+
+            <div class="visual-explanation">
+                <div class="visual-item">
+                    <h3>🗺️ map()</h3>
+                    <p><em>"Transforma cada elemento"</em></p>
+                    <div class="code-block">
+                        [1, 2, 3].map(x => x * 2)<br>
+                        // → [2, 4, 6]
+                    </div>
+                </div>
+
+                <div class="visual-item">
+                    <h3>🔍 filter()</h3>
+                    <p><em>"Filtra elementos"</em></p>
+                    <div class="code-block">
+                        [1, 2, 3, 4].filter(x => x > 2)<br>
+                        // → [3, 4]
+                    </div>
+                </div>
+
+                <div class="visual-item">
+                    <h3>🧮 reduce()</h3>
+                    <p><em>"Reduce a un valor"</em></p>
+                    <div class="code-block">
+                        [1, 2, 3].reduce((acc, x) => <br>
+                        &nbsp;&nbsp;acc + x, 0)<br>
+                        // → 6
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Interactivo -->
+        <div class="demo-section">
+            <h2>🎮 Demo Interactivo</h2>
+            <p>Experimenta con programación funcional en tiempo real:</p>
+
+            <div class="demo-controls">
+                <button onclick="ejecutarMap()">Probar map()</button>
+                <button onclick="ejecutarFilter()">Probar filter()</button>
+                <button onclick="ejecutarReduce()">Probar reduce()</button>
+                <button onclick="ejecutarPipeline()">Probar Pipeline</button>
+            </div>
+
+            <div class="demo-output" id="demoOutput">
+                Haz clic en los botones para ver la magia de la PF...
+            </div>
+
+            <div class="code-block" id="codeExample">
+                // Array de ejemplo<br>
+                const productos = [<br>
+                &nbsp;&nbsp;{ nombre: 'Manzana', precio: 2, categoria: 'fruta' },<br>
+                &nbsp;&nbsp;{ nombre: 'Pan', precio: 1, categoria: 'panaderia' },<br>
+                &nbsp;&nbsp;{ nombre: 'Leche', precio: 3, categoria: 'lacteo' },<br>
+                &nbsp;&nbsp;{ nombre: 'Naranja', precio: 2, categoria: 'fruta' }<br>
+                ];
+            </div>
+        </div>
+
+        <!-- Ejemplo del Mundo Real -->
+        <div class="demo-section">
+            <h2>🏪 Ejemplo: Lista de Compras</h2>
+
+            <div class="code-block">
+                // Pipeline funcional - Cadena de operaciones<br>
+                const resultado = productos<br>
+                &nbsp;&nbsp;.filter(producto => producto.categoria === 'fruta')<br>
+                &nbsp;&nbsp;.map(producto => ({<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;...producto,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;precioConImpuesto: producto.precio * 1.16<br>
+                &nbsp;&nbsp;}))<br>
+                &nbsp;&nbsp;.reduce((total, producto) => <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;total + producto.precioConImpuesto, 0);<br>
+                <br>
+                console.log(resultado); // 4.64
+            </div>
+
+            <div class="visual-explanation">
+                <div class="visual-item">
+                    <h4>1. filter()</h4>
+                    <p>Solo frutas</p>
+                    <small>2 productos</small>
+                </div>
+                <div class="visual-item">
+                    <h4>2. map()</h4>
+                    <p>Añadir impuesto</p>
+                    <small>16% de impuesto</small>
+                </div>
+                <div class="visual-item">
+                    <h4>3. reduce()</h4>
+                    <p>Calcular total</p>
+                    <small>Suma todo</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="card-grid">
+            <div class="card">
+                <h2>✅ Ventajas</h2>
+                <ul style="padding-left: 20px; margin-top: 15px;">
+                    <li><strong>Código predecible:</strong> Mismas entradas = mismas salidas</li>
+                    <li><strong>Fácil de testear:</strong> Sin dependencias externas</li>
+                    <li><strong>Menos bugs:</strong> Sin efectos secundarios sorpresa</li>
+                    <li><strong>Más mantenible:</strong> Código claro y declarativo</li>
+                    <li><strong>Escalable:</strong> Fácil de paralelizar</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🎯 Cuándo Usarla</h2>
+                <ul style="padding-left: 20px; margin-top: 15px;">
+                    <li>Procesamiento de datos</li>
+                    <li>Transformaciones complejas</li>
+                    <li>Aplicaciones concurrentes</li>
+                    <li>Donde la predecibilidad es clave</li>
+                    <li>Sistemas de alta confiabilidad</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Resumen Visual -->
+        <div class="demo-section">
+            <h2>📚 Resumen Visual</h2>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <div
+                    style="display: inline-block; text-align: left; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: var(--primary); margin-bottom: 20px;">🧩 Conceptos Clave</h3>
+
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 15px; align-items: center;">
+                        <span class="badge">🎯</span>
+                        <span><strong>Funciones Puras:</strong> Sin efectos secundarios</span>
+
+                        <span class="badge success">🔄</span>
+                        <span><strong>Inmutabilidad:</strong> No modificar, crear nuevo</span>
+
+                        <span class="badge warning">🎭</span>
+                        <span><strong>First-Class Functions:</strong> Funciones como valores</span>
+
+                        <span class="badge accent">🗺️</span>
+                        <span><strong>map/filter/reduce:</strong> Transformar datos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos para el demo
+        const productos = [
+            { nombre: 'Manzana', precio: 2, categoria: 'fruta' },
+            { nombre: 'Pan', precio: 1, categoria: 'panaderia' },
+            { nombre: 'Leche', precio: 3, categoria: 'lacteo' },
+            { nombre: 'Naranja', precio: 2, categoria: 'fruta' },
+            { nombre: 'Queso', precio: 5, categoria: 'lacteo' }
+        ];
+
+        function ejecutarMap() {
+            const resultado = productos.map(producto => ({
+                ...producto,
+                precioConDescuento: producto.precio * 0.9
+            }));
+
+            mostrarResultado(
+                'map() - Aplicar 10% de descuento a todos los productos:',
+                resultado
+            );
+        }
+
+        function ejecutarFilter() {
+            const resultado = productos.filter(producto =>
+                producto.categoria === 'fruta'
+            );
+
+            mostrarResultado(
+                'filter() - Solo productos de la categoría "fruta":',
+                resultado
+            );
+        }
+
+        function ejecutarReduce() {
+            const resultado = productos.reduce((total, producto) =>
+                total + producto.precio, 0
+            );
+
+            mostrarResultado(
+                'reduce() - Precio total de todos los productos:',
+                `$${resultado}`
+            );
+        }
+
+        function ejecutarPipeline() {
+            const resultado = productos
+                .filter(producto => producto.precio > 2)
+                .map(producto => producto.nombre)
+                .join(', ');
+
+            mostrarResultado(
+                'Pipeline - Nombres de productos que cuestan más de $2:',
+                resultado
+            );
+        }
+
+        function mostrarResultado(titulo, datos) {
+            const output = document.getElementById('demoOutput');
+            output.innerHTML = `
+                <h4 style="color: var(--secondary); margin-bottom: 10px;">${titulo}</h4>
+                <pre style="background: #2c3e50; color: white; padding: 15px; border-radius: 8px; overflow-x: auto;">${JSON.stringify(datos, null, 2)}</pre>
+            `;
+        }
+
+        // Efectos visuales para el código interactivo
+        document.querySelectorAll('.interactive-code .code-line').forEach(line => {
+            line.addEventListener('click', function () {
+                this.style.background = '#34495e';
+                setTimeout(() => {
+                    this.style.background = '';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>
