@@ -21,6 +21,9 @@ export default function ecma6() {
     constructor(nombre, apellido) {
       this.nombre = nombre;
       this.#apellido = apellido;
+      this.fn = (cb) => {
+        cb.call(this);
+      };
     }
 
     saludar() {
